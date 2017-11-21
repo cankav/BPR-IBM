@@ -8,10 +8,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Loading train data
-train_data, users_to_index, items_to_index = load_data_from_csv('WABPRtrainSet.csv')
+train_data, users_to_index, items_to_index = load_data_from_csv('movietrain.csv')
 #print train_data
 # Loading test data
-test_data, users_to_index, items_to_index = load_data_from_csv('WABPRtestSet.csv', users_to_index, items_to_index)
+test_data, users_to_index, items_to_index = load_data_from_csv('movietest.csv', users_to_index, items_to_index)
 #print test_data
 # Initialising BPR model, 25 latent factors
 #in BPR we have number of feature as being 'rank' and is the first argument we pass
@@ -21,7 +21,7 @@ bpr = BPR(64, test_data, len(users_to_index.keys()), len(items_to_index.keys()))
 # Training model, 30 epochs
 
 
-bpr.train(train_data, epochs=400)
+bpr.train(train_data, epochs=200)
 # Testing model
 #print bpr.test(test_data)
 #print(np.mean(bpr.GM))
